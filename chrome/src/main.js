@@ -1,5 +1,5 @@
 // Variables
-var serverUrl = "https://www.json-server.dev";
+var serverUrl = "http://35.185.4.76:3000";
 var tweetArray = [];
 var regex = /(<([^>]+)>)/ig;
 var reportBtn = '<div class="ProfileTweet-action js-toggleState"> <button class="ProfileTweet-actionButton js-actionButton reportToServer" type="button">🚫 false positive</button></div>';
