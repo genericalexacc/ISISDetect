@@ -40,7 +40,7 @@ postTweets(tweetArray);
 function postTweets(tweets) {
   $.ajax({
     type: "POST",
-    url: serverUrl + "/tweets",
+    url: serverUrl,
     data: tweets,
     //success: success,
     dataType: "json"
