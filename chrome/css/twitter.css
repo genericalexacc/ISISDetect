@@ -1,0 +1,14 @@
+.isisAlert {
+  color: red;
+  text-decoration: underline;
+}
+.isisWarning {
+  color: #FFCC00;
+}
+.reportToServer {
+  padding-left: -30px;
+  color: black;
+}
+.reportToServer:hover {
+  color: red;
+}
