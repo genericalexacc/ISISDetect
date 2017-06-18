@@ -3,7 +3,7 @@ const sentiment = require('sentiment');
 const serverUrl = "http://localhost:3000";
 var request = require('request');
 var LocalStorage = require('node-localstorage').LocalStorage;
-var localStorage = new LocalStorage('./query');
+var localStorage = new LocalStorage('./localstorage');
 
 // If not provided a search term by user error
 var searchTerm;
