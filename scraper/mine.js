@@ -1,6 +1,8 @@
 const Twit = require('twit');
 const sentiment = require('sentiment');
-var LocalStorage = require('node-localstorage').LocalStorage,
+const serverUrl = "http://localhost:3000";
+var request = require('request');
+var LocalStorage = require('node-localstorage').LocalStorage;
 var localStorage = new LocalStorage('./query');
 
 // If not provided a search term by user error
@@ -38,11 +40,29 @@ function processTweets(error, data, response) {
     // save time of last result
     localStorage.setItem('testObject', data.statuses[0].id);
 
+    var tweets = data.statuses;
+    console.log(tweets);
+    // TODO post to server here
+    request.post(
+      serverUrl + "/tweets",
+      tweets,
+      function (error, response, body) {
+        if (!error) {
+          console.log(body)
+        } else {
+          console.log(response.statusCode);
+          console.log(error);
+	}
+      }
+    );
+
+    // TODO in repsonse append to a text file, repeat
+    
     // process results
     data.statuses.forEach(function(tweet) {
       // Just send text to server
       tweet.tSentiment = sentiment(tweet.text);
-      console.log(JSON.stringify(tweet.tSentiment) + " " + tweet.text);
+      //console.log(JSON.stringify(tweet.tSentiment) + " " + tweet.text);
     });
 
   }

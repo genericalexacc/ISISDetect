@@ -2,7 +2,7 @@
 var serverUrl = "https://www.json-server.dev";
 var tweetArray = [];
 var regex = /(<([^>]+)>)/ig;
-var reportBtn = '<div class="ProfileTweet-action js-toggleState"> <button class="ProfileTweet-actionButton js-actionButton reportToServer" type="button">false positive</button></div>';
+var reportBtn = '<div class="ProfileTweet-action js-toggleState"> <button class="ProfileTweet-actionButton js-actionButton reportToServer" type="button">🚫 false positive</button></div>';
 
 // Get each tweet, record and apply effects
 // TODO this should be inside return function after posting to server
@@ -11,6 +11,7 @@ $(".js-tweet-text-container p").each(function(i) {
   var random = Math.round(Math.random()*100) + 1;
   tweet.id = i;
   $(this).parent().attr("id","isis" + i);
+  $(this).parent().attr("class","monitorTweet");
   if(random>90) $(this).parent().attr("class", "isisAlert");
   else if(random>70) $(this).parent().attr("class", "isisWarning");
   tweet.text = $(this).html().replace(regex, "");
@@ -25,7 +26,7 @@ $(".ProfileTweet-actionList").each(function(i) {
 // TODO Send false report to server
 $(".reportToServer").click(function(i) {
   $(this).css("color", "red");
-  var tweet = $(".isisAlert p")[$('.reportToServer').index(this)].innerHTML.replace(regex, "");
+  var tweet = $(".monitorTweet p")[$('.reportToServer').index(this)].innerHTML.replace(regex, "");
   postFalsePositive(tweet);
 });
 
