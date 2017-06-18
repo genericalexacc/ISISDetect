@@ -11,9 +11,9 @@ $(".js-tweet-text-container p").each(function(i) {
   var random = Math.round(Math.random()*100) + 1;
   tweet.id = i;
   $(this).parent().attr("id","isis" + i);
-  $(this).parent().attr("class","monitorTweet");
-  if(random>90) $(this).parent().attr("class", "isisAlert");
-  else if(random>70) $(this).parent().attr("class", "isisWarning");
+  if(random>90) $(this).parent().attr("class", "isisAlert monitorTweet");
+  else if(random>70) $(this).parent().attr("class", "isisWarning monitorTweet");
+  else $(this).parent().attr("class","monitorTweet");
   tweet.text = $(this).html().replace(regex, "");
   tweetArray.push(tweet);
 });
@@ -26,6 +26,7 @@ $(".ProfileTweet-actionList").each(function(i) {
 // TODO Send false report to server
 $(".reportToServer").click(function(i) {
   $(this).css("color", "red");
+  console.log(i);
   var tweet = $(".monitorTweet p")[$('.reportToServer').index(this)].innerHTML.replace(regex, "");
   postFalsePositive(tweet);
 });
