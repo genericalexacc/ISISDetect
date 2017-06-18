@@ -26,8 +26,8 @@ $(".ProfileTweet-actionList").each(function(i) {
 // TODO Send false report to server
 $(".reportToServer").click(function(i) {
   $(this).css("color", "red");
-  console.log(i);
   var tweet = $(".monitorTweet p")[$('.reportToServer').index(this)].innerHTML.replace(regex, "");
+  var realVal = prompt("Enter value to send server (1-100)");
   postFalsePositive(tweet);
 });
 
